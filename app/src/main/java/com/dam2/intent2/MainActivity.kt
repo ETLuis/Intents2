@@ -11,7 +11,8 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
-        val RESULTADO_UNO = 1
+    val RESULTADO_UNO = 1
+    val RESULTADO_DOS = 2
     val imagen = findViewById<ImageView>(R.id.imageView)
     val resultText = findViewById<TextView>(R.id.resultText)
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +42,10 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == RESULTADO_UNO && resultCode == RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
             imagen.setImageBitmap(imageBitmap)
+        }
+        if (requestCode == RESULTADO_DOS && resultCode == RESULT_OK) {
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            resultText.text = data?.getStringExtra("multiplicacion")
         }
     }
 }
